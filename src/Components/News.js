@@ -26,12 +26,12 @@ const News = (props) => {
     setTotalResults(parsedData.totalResults);
     setLoading(false);
     props.setProgress(100);
-  }, [props.country, props.category, props.pageSize, page, props]);
+  }, [page, props]);
 
   useEffect(() => {
     document.title = `${CapitaliseFirstLetter(props.category)} - NewsMonkey`;
     updateNews();
-  }, [updateNews]);
+  }, [updateNews, props.category]);
 
   const fetchMoreData = async () => {
     const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=763d45d8c3a14c8ba7bcb8fb6c8c6766&page=${page + 1}&pageSize=${props.pageSize}`;
